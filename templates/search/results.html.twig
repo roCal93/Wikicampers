@@ -1,0 +1,14 @@
+
+{% if availabilities is empty %}
+    <p>Aucun véhicule disponible pour les dates demandées, même avec une tolérance d'un jour.</p>
+{% else %}
+    <h2>Véhicules disponibles :</h2>
+    {% for availability in availabilities %}
+        <div>
+            <p>{{ availability.vehicle.marque }} {{ availability.vehicle.modele }}</p>
+            <p>Date de début: {{ availability.startDate|date('d-m-Y') }}</p>
+            <p>Date de fin: {{ availability.endDate|date('d-m-Y') }}</p>
+            <p>Prix par jour: {{ availability.pricePerDay }}€</p>
+        </div>
+    {% endfor %}
+{% endif %}
